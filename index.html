@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deletion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #d9534f;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        .info {
+            background-color: #d9edf7;
+            border-left: 4px solid #31708f;
+            padding: 10px 15px;
+            margin: 20px 0;
+        }
+        .success-message {
+            background-color: #dff0d8;
+            border-left: 4px solid #3c763d;
+            padding: 15px;
+            margin-top: 20px;
+            color: #3c763d;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Account Deletion Request</h1>
+    
+    <div class="container">
+        <h2>Request Account Deletion</h2>
+        <p>Please fill out the form below to request deletion of your account:</p>
+        
+        <div id="deletion-form">
+            <form id="accountDeletionForm">
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your registered email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required placeholder="Enter your registered mobile number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your account password">
+                </div>
+                
+                <div class="form-group">
+                    <button type="button" id="submitBtn" class="btn" onclick="showSuccessMessage()">Submit Deletion Request</button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="success-message" class="success-message">
+            <h3>Success!</h3>
+            <p>Your account deletion request has been successfully submitted. We will process your request within 24-48 hours.</p>
+            <p>A confirmation has been sent to your email address.</p>
+        </div>
+        
+        <div class="info">
+            <p><strong>Note:</strong> Account deletion is permanent and cannot be undone. All your data will be removed from our servers within 30 days.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Privacy Policy Information</h2>
+        <p>As per our Privacy Policy, when you delete your account:</p>
+        <ul>
+            <li>All personal identifiable information will be removed from our active databases</li>
+            <li>Your content will no longer be visible to other users</li>
+            <li>Some information may be retained in our backups for up to 30 days before being completely purged</li>
+            <li>We may retain certain data in anonymized form for analytics purposes</li>
+        </ul>
+        
+        <p>For more information, please refer to our full <a href="https://shrigangasabha.github.io/app-content/">Privacy Policy</a>.</p>
+    </div>
+    
+    <script>
+        function showSuccessMessage() {
+            // Validate form fields
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !mobile || !password) {
+                alert("Please fill in all required fields");
+                return;
+            }
+            
+            // Hide the form
+            document.getElementById('deletion-form').style.display = 'none';
+            
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // You can add code here to send the form data to your server
+            console.log("Form submitted with:", { email, mobile, password });
+            
+            // Scroll to success message
+            document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
